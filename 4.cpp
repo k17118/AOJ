@@ -1,16 +1,13 @@
 #include <iostream>
-#include<string.h>
 using namespace std;
 
 int main(){
-  int a[100][100];
-  int b[100][100];
-  int c[100][100];
-
+  int a[100][100] = {{0}};
+  int b[100][100] = {{0}};
+  long c[100][100] = {{0}};
   int n,m,l;
 
   cin >> n >> m >> l;
-
   for(int in = 0; in < n; in++){
     for(int jm = 0; jm < m; jm++){
       cin >> a[in][jm];
@@ -21,18 +18,24 @@ int main(){
       cin >> b[jm][kl];
     }
   }
-
-  for(int i = 0; i < n; i++){
-    for(int j = 0; j < m; j++){
-      for(int k = 0; k < l; k++){
-        c[i][k] += a[i][j] * b[j][k];
+  for(int jm = 0; jm < m; jm++){
+    for(int kl = 0; kl < l; kl++){
+      cin >> b[jm][kl];
+    }
+  }
+  for(int in = 0; in < n; in++){
+    for(int jm = 0; jm < m; jm++){
+      for(int kl = 0; kl < l; kl++){
+        c[in][kl] += a[in][jm] * b[jm][kl];
       }
     }
   }
-
-  for(int i = 0; i < n; i++){
-    for(int j = 0; j < l; j++){
-      cout << c[i][j] << " ";
+  for(int in = 0; in < n; in++){
+    for(int jl = 0; jl < l; jl++){
+      cout << c[in][jl];
+      if(jl != l-1){
+        cout << " ";
+      }
     }
     cout << endl;
   }
